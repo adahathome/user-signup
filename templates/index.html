@@ -1,0 +1,42 @@
+{% extends "base.html" %}    
+{% block content %}
+<form action='/auth' method='post'>
+    <label for='user-name'>
+        User Name:
+        <input id='user-name' type='text' name='user_name' value={{user_name}} >
+        <p class='error'>
+        {% if username_error %}
+        Username must be more than 3 characters
+        {% endif %}
+        </p>
+    </label>
+    <label for='password'>
+        Password:
+        <input id='password' type='password' name='password' />
+        <p class='error'>
+        {% if password_error %}
+        Password must be more than 3 characters and less than 20
+        {% endif %}
+        </p>
+    </label>
+    <label for='pass-match'>
+        Retype Password:
+        <input id='pass-match' type='password' name='pass_match' />
+        <p class='error'>
+        {% if pass_match_error %}
+        Passwords must match
+        {% endif %}
+        </p>
+    </label>
+    <label for='user-email'>
+        User Email (optional):
+        <input id='user-email' type='text' name='user_email' value={{user_email}} >
+        <p class='error'>
+        {% if user_email_error %}
+        Email must be valid email
+        {% endif %}
+        </p>
+    </label>
+    <input type="submit" />
+</form>
+{% endblock %}
